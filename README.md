@@ -5,13 +5,13 @@ servidor MCP para o agente da sua IDE publicar insights no painel.
 O código-fonte do app é privado; este repositório distribui os binários assinados
 para Windows e a ponte do Copilot.
 
-**[Baixar Action v1.5.0](https://github.com/AllanSantos-DV/action-releases/releases/tag/v1.5.0)** ·
+**[Baixar Action v1.5.1](https://github.com/AllanSantos-DV/action-releases/releases/tag/v1.5.1)** ·
 [Guia visual](https://allansantos-dv.github.io/copilot-marketplace/p/action-bridge/) ·
 [Última versão](https://github.com/AllanSantos-DV/action-releases/releases/latest)
 
 ## Instalar
 
-1. Baixe **Action-v1.5.0-win64.zip** na release.
+1. Baixe **Action-v1.5.1-win64.zip** na release.
 2. Extraia todo o conteúdo numa pasta permanente, como
    `%LOCALAPPDATA%\Programs\Action`. Mantenha `_internal/` ao lado dos executáveis.
 3. Execute `Action.exe` para a interface do app, ou configure o MCP abaixo
@@ -22,7 +22,7 @@ transcrição padrão e o host de agente escolhido. A memória compartilhada
 permite correlações por projeto. O pacote do Action não requer Python ou Node;
 seu host e a ponte Copilot têm os próprios requisitos.
 
-`objects-v1.5.0.zip`, o manifesto e as assinaturas são arquivos do atualizador.
+`objects-v1.5.1.zip`, o manifesto e as assinaturas são arquivos do atualizador.
 Não use o ZIP de objetos como instalador.
 
 ## Claude Code e Codex
@@ -79,15 +79,15 @@ copilot plugin install action-bridge@copilot-marketplace
   Chaves ficam em variáveis de ambiente. Transcrições enviadas à IDE seguem o
   provedor do seu agente.
 - O app oferece atualização por manifesto/pacotes assinados e fallback do ZIP
-  completo. Ao migrar da 1.4.0, feche sessões IDE conectadas. Se o atualizador
+  completo. Ao migrar da 1.4.0/1.5.0, feche sessões IDE conectadas. Se o atualizador
   antigo continuar na versão anterior, extraia manualmente o novo ZIP na pasta
-  de instalação; a correção do fallback passa a valer na 1.5.0.
+  de instalação; a 1.5.1 também corrige o encerramento na bandeja durante o update.
 - Depois de atualizar, os setups podem atualizar a integração com backups:
   Claude usa `-UpdateMcp -UpdateCommands`; Codex usa `-UpdateMcp -UpdateIntegration`.
 
 ## Validação
 
 Veja as notas da release para os ensaios realizados e limites conhecidos.
-A v1.5.0 foi autorizada com medição de fala humana até texto e ensaio de 30 minutos
+A publicação mantém medição de fala humana até texto e ensaio de 30 minutos
 com recuperação da memória ainda pendentes. Os testes de integração dos agentes
 com transcrições sintéticas não comprovam esses dois cenários.
