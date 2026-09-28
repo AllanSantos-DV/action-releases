@@ -5,13 +5,13 @@ servidor MCP para o agente da sua IDE publicar insights no painel.
 O código-fonte do app é privado; este repositório distribui os binários assinados
 para Windows e a ponte do Copilot.
 
-**[Baixar Action v1.5.1](https://github.com/AllanSantos-DV/action-releases/releases/tag/v1.5.1)** ·
+**[Baixar Action v1.6.0](https://github.com/AllanSantos-DV/action-releases/releases/tag/v1.6.0)** ·
 [Guia visual](https://allansantos-dv.github.io/copilot-marketplace/p/action-bridge/) ·
 [Última versão](https://github.com/AllanSantos-DV/action-releases/releases/latest)
 
 ## Instalar
 
-1. Baixe **Action-v1.5.1-win64.zip** na release.
+1. Baixe **Action-v1.6.0-win64.zip** na release.
 2. Extraia todo o conteúdo numa pasta permanente, como
    `%LOCALAPPDATA%\Programs\Action`. Mantenha `_internal/` ao lado dos executáveis.
 3. Execute `Action.exe` para a interface do app, ou configure o MCP abaixo
@@ -22,10 +22,10 @@ transcrição padrão e o host de agente escolhido. A memória compartilhada
 permite correlações por projeto. O pacote do Action não requer Python ou Node;
 seu host e a ponte Copilot têm os próprios requisitos.
 
-`objects-v1.5.1.zip`, o manifesto e as assinaturas são arquivos do atualizador.
+`objects-v1.6.0.zip`, o manifesto e as assinaturas são arquivos do atualizador.
 Não use o ZIP de objetos como instalador.
 
-## Claude Code e Codex
+## Claude Code, Codex e Cursor
 
 No PowerShell, dentro da pasta extraída, execute o setup do host que vai usar:
 
@@ -34,13 +34,15 @@ No PowerShell, dentro da pasta extraída, execute o setup do host que vai usar:
 | Claude Code | `.\ClaudeCode\setup.ps1` |
 | Codex app/CLI (CLI 0.158.0+) | `.\Codex\setup.ps1` |
 | Extensão Codex na IDE | `.\Codex\setup.ps1 -Mode Skills` |
+| Cursor Desktop/CLI | `.\Cursor\setup.ps1` |
 
 Escolha um modo Codex por perfil. Abra uma nova sessão na pasta do projeto,
 confira `/mcp` e, no Codex, revise/confie os hooks Action em `/hooks`.
-Os guias completos estão em `ClaudeCode/README.md` e `Codex/README.md` no ZIP.
+Os guias completos estão em `ClaudeCode/README.md`, `Codex/README.md` e
+`Cursor/README.md` no ZIP. No Claude Desktop, use a aba Code no modo Local.
 
 ```text
-# Claude Code
+# Claude Code ou Cursor
 /action-join revisão Alpha
 /action-record Alpha guardar áudio
 
@@ -56,9 +58,20 @@ e o LLM/provedor é o que você configurou na IDE.
 
 Para sair durante o acompanhamento, envie **“Saia da reunião agora. Não encerre
 a gravação.”** Sair mantém a captura. Peça explicitamente para encerrar a
-reunião quando quiser finalizar a gravação. O hook Codex mantém a continuidade
-na mesma sessão enquanto confiado e com o host aberto; respeita saída,
+reunião quando quiser finalizar a gravação. Os hooks Codex/Cursor mantêm a continuidade
+na mesma sessão enquanto habilitados e com o host aberto; respeitam saída,
 interrupção e falhas persistentes.
+
+## Tela, MCP e memória
+
+Uma gravação iniciada na tela aparece no MCP, permite entrada tardia do agente e
+mostra seus insights na própria interface. Painel web, MCP e tela compartilham
+reuniões ativas e histórico salvo. Escolha/crie o projeto e selecione os canais
+na tela; o agente usa o mesmo projeto pela memória compartilhada.
+
+Se a memória ficar indisponível, o Action salva localmente e retenta a entrega.
+`index_queue_status` e `index_pending` permitem acompanhar esses envios.
+A indexação e os embeddings continuam no daemon de memória.
 
 ## Copilot
 
@@ -83,11 +96,14 @@ copilot plugin install action-bridge@copilot-marketplace
   antigo continuar na versão anterior, extraia manualmente o novo ZIP na pasta
   de instalação; a 1.5.1 também corrige o encerramento na bandeja durante o update.
 - Depois de atualizar, os setups podem atualizar a integração com backups:
-  Claude usa `-UpdateMcp -UpdateCommands`; Codex usa `-UpdateMcp -UpdateIntegration`.
+  Claude usa `-UpdateMcp -UpdateCommands`; Codex e Cursor usam
+  `-UpdateMcp -UpdateIntegration`.
 
 ## Validação
 
 Veja as notas da release para os ensaios realizados e limites conhecidos.
-A publicação mantém medição de fala humana até texto e ensaio de 30 minutos
-com recuperação da memória ainda pendentes. Os testes de integração dos agentes
-com transcrições sintéticas não comprovam esses dois cenários.
+Cursor foi validado na CLI nativa: três insights, retomada após silêncio e saída
+sem parar a gravação. Os testes cobrem Qt → MCP e recuperação da conexão com o
+daemon real. A revisão visual de Cursor Desktop, Codex app/extensão e Claude
+Desktop Code/Local será executada pelo responsável. Qualidade e benchmarks do
+reconhecimento de voz pertencem ao Vox Engine.
