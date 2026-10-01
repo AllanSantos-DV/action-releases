@@ -5,13 +5,13 @@ servidor MCP para o agente da sua IDE publicar insights no painel.
 O código-fonte do app é privado; este repositório distribui os binários assinados
 para Windows e a ponte do Copilot.
 
-**[Baixar Action v1.6.0](https://github.com/AllanSantos-DV/action-releases/releases/tag/v1.6.0)** ·
+**[Baixar Action v1.6.1](https://github.com/AllanSantos-DV/action-releases/releases/tag/v1.6.1)** ·
 [Guia visual](https://allansantos-dv.github.io/copilot-marketplace/p/action-bridge/) ·
 [Última versão](https://github.com/AllanSantos-DV/action-releases/releases/latest)
 
 ## Instalar
 
-1. Baixe **Action-v1.6.0-win64.zip** na release.
+1. Baixe **Action-v1.6.1-win64.zip** na release.
 2. Extraia todo o conteúdo numa pasta permanente, como
    `%LOCALAPPDATA%\Programs\Action`. Mantenha `_internal/` ao lado dos executáveis.
 3. Execute `Action.exe` para a interface do app, ou configure o MCP abaixo
@@ -22,8 +22,15 @@ transcrição padrão e o host de agente escolhido. A memória compartilhada
 permite correlações por projeto. O pacote do Action não requer Python ou Node;
 seu host e a ponte Copilot têm os próprios requisitos.
 
-`objects-v1.6.0.zip`, o manifesto e as assinaturas são arquivos do atualizador.
+`objects-v1.6.1.zip`, o manifesto e as assinaturas são arquivos do atualizador.
 Não use o ZIP de objetos como instalador.
+
+## Reunião pela bandeja
+
+O Action instalado inicia na bandeja com o Windows. Clique no ícone e escolha
+**Nova reunião…** para selecionar o projeto, o microfone e a saída de áudio
+usada pelo Teams. Clique **Iniciar** quando estiver pronto. Em Configurações,
+é possível desligar o início com Windows.
 
 ## Claude Code, Codex e Cursor
 
@@ -86,6 +93,14 @@ copilot plugin install action-bridge@copilot-marketplace
 
 ## Áudio, nuvem e atualização
 
+Na tela ou no painel `/live`, escolha o fone usado pelo Teams para captar o
+som remoto. O modo Automático segue o padrão global do Windows. Se o Teams
+usa outro dispositivo, selecione seu nome; durante a gravação, use **Trocar
+saída** sem perder os trechos anteriores. Pode haver uma lacuna curta na troca.
+Pelo MCP, `audio_devices.loopback_outputs` lista nomes para
+`output_device_name` em `recording_prepare` e `recording_start`.
+
+
 - Vox local é o padrão. Guardar `mic.wav` e `system.wav` separados é opcional,
   disponível no painel e pelo pedido de guardar áudio ao agente.
 - Whisper Groq exige seleção e consentimento explícitos: envia o áudio à nuvem.
@@ -102,6 +117,8 @@ copilot plugin install action-bridge@copilot-marketplace
 ## Validação
 
 Veja as notas da release para os ensaios realizados e limites conhecidos.
+A troca de loopback Realtek → Fuxi-H3 foi exercitada nesta máquina sem encerrar
+a captura; a conferência de som e transcrição do Teams na tela é do responsável.
 Cursor foi validado na CLI nativa: três insights, retomada após silêncio e saída
 sem parar a gravação. Os testes cobrem Qt → MCP e recuperação da conexão com o
 daemon real. A revisão visual de Cursor Desktop, Codex app/extensão e Claude
