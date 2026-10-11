@@ -5,13 +5,13 @@ servidor MCP para o agente da sua IDE publicar insights no painel.
 O código-fonte do app é privado; este repositório distribui os binários assinados
 para Windows e a ponte do Copilot.
 
-**[Baixar Action v1.6.3](https://github.com/AllanSantos-DV/action-releases/releases/tag/v1.6.3)** ·
+**[Baixar Action v1.7.0](https://github.com/AllanSantos-DV/action-releases/releases/tag/v1.7.0)** ·
 [Guia visual](https://allansantos-dv.github.io/copilot-marketplace/p/action-bridge/) ·
 [Última versão](https://github.com/AllanSantos-DV/action-releases/releases/latest)
 
 ## Instalar
 
-1. Baixe **Action-v1.6.3-win64.zip** na release.
+1. Baixe **Action-v1.7.0-win64.zip** na release.
 2. Extraia todo o conteúdo numa pasta permanente, como
    `%LOCALAPPDATA%\Programs\Action`. Mantenha `_internal/` ao lado dos executáveis.
 3. Execute `Action.exe` para a interface do app, ou configure o MCP abaixo
@@ -22,7 +22,7 @@ transcrição padrão e o host de agente escolhido. A memória compartilhada
 permite correlações por projeto. O pacote do Action não requer Python ou Node;
 seu host e a ponte Copilot têm os próprios requisitos.
 
-`objects-v1.6.3.zip`, o manifesto e as assinaturas são arquivos do atualizador.
+`objects-v1.7.0.zip`, o manifesto e as assinaturas são arquivos do atualizador.
 Não use o ZIP de objetos como instalador.
 
 ## Reunião pela bandeja
@@ -31,6 +31,12 @@ O Action instalado inicia na bandeja com o Windows. Clique no ícone e escolha
 **Nova reunião…** para selecionar o projeto, o microfone e a saída de áudio
 usada pelo Teams. Clique **Iniciar** quando estiver pronto. Em Configurações,
 é possível desligar o início com Windows.
+
+Para gravar sem abrir tela, use **Ctrl+Alt+Shift+R**: o Action começa no
+projeto e com a fonte definidos em Configurações. Apertar de novo encerra, salva
+a reunião e copia a ata para a área de transferência, uma fala por linha no
+formato `[00:12:31] texto`. O atalho pode ser trocado ou desligado em
+Configurações.
 
 ## Claude Code, Codex e Cursor
 
