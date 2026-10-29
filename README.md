@@ -5,13 +5,13 @@ servidor MCP para o agente da sua IDE publicar insights no painel.
 O código-fonte do app é privado; este repositório distribui os binários assinados
 para Windows e a ponte do Copilot.
 
-**[Baixar Action v1.8.1](https://github.com/AllanSantos-DV/action-releases/releases/tag/v1.8.1)** ·
+**[Baixar Action v1.8.2](https://github.com/AllanSantos-DV/action-releases/releases/tag/v1.8.2)** ·
 [Guia visual](https://allansantos-dv.github.io/copilot-marketplace/p/action-bridge/) ·
 [Última versão](https://github.com/AllanSantos-DV/action-releases/releases/latest)
 
 ## Instalar
 
-1. Baixe **Action-v1.8.1-win64.zip** na release.
+1. Baixe **Action-v1.8.2-win64.zip** na release.
 2. Extraia todo o conteúdo numa pasta permanente, como
    `%LOCALAPPDATA%\Programs\Action`. Mantenha `_internal/` ao lado dos executáveis.
 3. Execute `Action.exe` para a interface do app, ou configure o MCP abaixo
@@ -22,7 +22,7 @@ transcrição padrão e o host de agente escolhido. A memória compartilhada
 permite correlações por projeto. O pacote do Action não requer Python ou Node;
 seu host e a ponte Copilot têm os próprios requisitos.
 
-`objects-v1.8.1.zip`, o manifesto e as assinaturas são arquivos do atualizador.
+`Action-Update-v1.8.2.exe`, `objects-v1.8.2.zip`, o manifesto e as assinaturas são arquivos do atualizador.
 Não use o ZIP de objetos como instalador.
 
 ## Reunião pela bandeja
